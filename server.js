@@ -46,6 +46,20 @@ app.get('/api/task/:id', async (req, res) => {
     }
 })
 
+//DELETE
+app.delete('/api/task/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const task = await Task.findByIdAndDelete(id)
+        if (!task) {
+            return res.status(404).json({ message: `Cannot find this ID: ${id}` })
+        }
+        res.status(200).json(task)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
 mongoose.connect(URL_CONNECT)
     .then(() => {
         console.log('Connect whit mongo')
