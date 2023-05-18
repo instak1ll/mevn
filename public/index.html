@@ -19,9 +19,9 @@
         </form>
 
         <ul>
-            <li>
-                <h3>Titulo</h3>
-                <p>Descripcion</p>
+            <li v-for="task in tasks" :key="task._id">
+                <h3>{{task.title}}</h3>
+                <p>{{task.description}}</p>
                 <button>Editar</button>
                 <button>Eliminar</button>
             </li>

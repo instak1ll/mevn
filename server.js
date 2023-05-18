@@ -11,6 +11,7 @@ const PORT = process.env.PORT
 
 //midlewers
 app.use(express.json())
+app.use(express.static(path.join(__dirname, 'public')))
 
 //frist get
 app.get('/', (req, res) => res.send('Frist hello from /'))
