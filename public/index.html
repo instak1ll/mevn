@@ -23,7 +23,7 @@
                 <h3>{{task.title}}</h3>
                 <p>{{task.description}}</p>
                 <button>Editar</button>
-                <button>Eliminar</button>
+                <button @click="deleteTask(task._id)">Eliminar</button>
             </li>
         </ul>
 
