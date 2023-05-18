@@ -64,6 +64,11 @@ new Vue({
                 })
                 if (response.ok) {
                     this.tasks = this.tasks.filter(task => task._id !== taskId)
+                    this.editTask = {
+                        id: '',
+                        title: '',
+                        description: '',
+                    }
                 } else {
                     console.log('Error al eliminar tarea')
                 }
