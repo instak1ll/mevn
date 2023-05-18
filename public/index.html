@@ -12,9 +12,9 @@
     <div id="app">
         <h1>RESTAPI CRUD TAREAS</h1>
 
-        <form>
-            <input type="text" placeholder="Escribe un título..." required>
-            <input type="text" placeholder="Escribe una descripción..." required>
+        <form @submit.prevent="addTask()">
+            <input type="text" v-model="newTask.title" placeholder="Escribe un título..." required>
+            <input type="text" v-model="newTask.description" placeholder="Escribe una descripción..." required>
             <button type="submit">Crear tarea</button>
         </form>
 
