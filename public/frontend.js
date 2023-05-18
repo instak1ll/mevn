@@ -12,6 +12,7 @@ new Vue({
                 title: '',
                 description: '',
             },
+            delete: false,
         }
     },
     created() {
@@ -70,12 +71,21 @@ new Vue({
                 console.error(error)
             }
         },
-        async editTaskModal(task) {
+        editTaskModal(task) {
+            this.delete = true
             this.editTask = {
                 id: task._id,
                 title: task.title,
                 description: task.description,
             }
+        },
+        cancelEdit() {
+            this.editMode = false,
+                this.editTask = {
+                    id: '',
+                    title: '',
+                    description: '',
+                }
         },
         async updateTask() {
             try {
