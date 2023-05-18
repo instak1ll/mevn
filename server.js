@@ -15,10 +15,32 @@ app.use(express.json())
 //frist get
 app.get('/', (req, res) => res.send('Frist hello from /'))
 
+//POST
 app.post('/api/task', async (req, res) => {
     try {
         const task = await Task.create(req.body)
         res.status(201).json(task)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+//GET
+app.get('/api/tasks', async (req, res) => {
+    try {
+        const tasks = await Task.find({})
+        res.status(200).json(tasks)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+})
+
+//GET ID
+app.get('/api/task/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const task = await Task.findById(id)
+        res.status(200).json(task)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }
