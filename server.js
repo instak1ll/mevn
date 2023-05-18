@@ -65,12 +65,11 @@ app.delete('/api/task/:id', async (req, res) => {
 app.put('/api/task/:id', async (req, res) => {
     try {
         const { id } = req.params
-        const task = await Task.findByIdAndUpdate(id, req.body)
+        const task = await Task.findByIdAndUpdate(id, req.body, { new: true })
         if (!task) {
             return res.status(404).json({ message: `Cannot find this ID: ${id}` })
         }
-        const taskUpdated = await Task.findById(id)
-        res.status(200).json(taskUpdated)
+        res.status(200).json(task)
     } catch (error) {
         res.status(500).json({ message: error.message })
     }

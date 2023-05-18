@@ -69,6 +69,29 @@ new Vue({
             } catch (error) {
                 console.error(error)
             }
+        },
+        async editTaskModal(task) {
+            this.editTask = {
+                id: task._id,
+                title: task.title,
+                description: task.description,
+            }
+        },
+        async updateTask() {
+            try {
+                const { id, title, description } = this.editTask
+                const response = await fetch(`/api/task/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ title, description })
+                })
+                const data = await response.json()
+                const index = this.tasks.findIndex(task => task._id === id)
+                this.tasks.splice(index, 1, data)
+                this.editTask = { id: '', title: '', description: '' }
+            } catch (error) {
+                console.error(error)
+            }
         }
     }
 }) 

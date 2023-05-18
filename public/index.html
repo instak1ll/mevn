@@ -22,16 +22,17 @@
             <li v-for="task in tasks" :key="task._id">
                 <h3>{{task.title}}</h3>
                 <p>{{task.description}}</p>
-                <button>Editar</button>
+                <button @click="editTaskModal(task)">Editar</button>
                 <button @click="deleteTask(task._id)">Eliminar</button>
             </li>
         </ul>
 
-        <div>
+        <div v-if="editTask.id">
             <h2>Editar tarea</h2>
-            <form>
-                <input type="text" placeholder="Escribe un nuevo título..." required>
-                <input type="text" placeholder="Escribe una nueva descripción..." required>
+            <form @submit.prevent="updateTask()">
+                <input type="text" v-model="editTask.title" placeholder="Escribe un nuevo título..." required>
+                <input type="text" v-model="editTask.description" placeholder="Escribe una nueva descripción..."
+                    required>
                 <button type="submit">Guardar cambios</button>
             </form>
         </div>
