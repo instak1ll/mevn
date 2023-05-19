@@ -1,6 +1,7 @@
 # RestAPI - Vue, Express, MongoDB - Task
 
-Este proyecto es una aplicación de tareas que utiliza una API REST construida con Vue, Express.js y MongoDB.
+Este proyecto es una aplicación de tareas que utiliza una API REST construida con Vue, Express.js y MongoDB. 
+Aqui el deploy: https://restapi-vue-express-mongodb-production.up.railway.app/
 
 ## Instalación y configuración
 
